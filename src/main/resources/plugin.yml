@@ -1,0 +1,4 @@
+name: RandomMultiple
+version: '1.0'
+main: com.server.randommultiple.Main
+api-version: '1.13'
