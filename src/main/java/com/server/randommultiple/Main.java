@@ -3,7 +3,13 @@ package com.server.randommultiple;
 import com.server.randommultiple.Command.MainCommand;
 import com.server.randommultiple.Listener.Citizen;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.IOException;
+
+import static com.server.randommultiple.UserData.Datas.config;
+import static com.server.randommultiple.UserData.Datas.playerFile;
 
 public final class Main extends JavaPlugin {
 
@@ -26,7 +32,22 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        plugin.saveDefaultConfig();
+    }
+
+    public void createPlayerDefaults() {
+        YamlConfiguration playerConfig = YamlConfiguration.loadConfiguration(playerFile);
+        playerConfig.addDefault("배팅 금액", 0);
+        playerConfig.options().copyDefaults(true);
+        saveYamlConfiguration();
+    }
+
+    public void saveYamlConfiguration() {
+        try {
+            config.save(playerFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Main getPlugin() {

@@ -9,16 +9,17 @@ import org.jetbrains.annotations.NotNull;
 public class MainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (sender instanceof Player player) {
+        if (sender instanceof Player) {
             if (args.length >= 1) {
                 switch (args[0]) {
-                    case "NPC설정" -> {
-                        SetOpenNPC setOpenNPC = new SetOpenNPC();
+                    case "설정" -> {
+                        SetNPC setOpenNPC = new SetNPC();
                         setOpenNPC.onCommand(sender, command, label, args);
                     }
 
-                    case "" -> {
-
+                    case "삭제" -> {
+                        RemoveNPC removeNPC = new RemoveNPC();
+                        removeNPC.onCommand(sender, command, label, args);
                     }
                 }
             }

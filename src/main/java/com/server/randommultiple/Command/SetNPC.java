@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static com.server.randommultiple.Main.plugin;
 
-public class SetOpenNPC implements CommandExecutor {
+public class SetNPC implements CommandExecutor {
 
     String title = (Color.chat("&f[ &a랜덤배율 &f] "));
 
@@ -19,10 +19,11 @@ public class SetOpenNPC implements CommandExecutor {
             if (player.isOp()) {
                 return true;
             }
-            plugin.getConfig().set("NPC설정", args[1]);
+            plugin.getConfig().set("NPC 설정", args[1]);
             plugin.saveConfig();
-            player.sendMessage(title + "npc설정이 되었습니다.");
+            player.sendMessage(title + "npc 설정이 되었습니다.");
         }
         return false;
     }
 }
+
