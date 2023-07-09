@@ -9,16 +9,16 @@ import java.io.File;
 public class Datas {
 
     public static YamlConfiguration config = new YamlConfiguration();
-    //public static File playerFile = new File(Main.getPlugin().getUuidFolder(), "plugins/RandomMultiple/UUIDs/");
+    public static File playerFile = new File(Main.getPlugin().getUuidFolder(), "plugins/RandomMultiple/UUIDs/");
 
     public static YamlConfiguration getPlayerConfig(OfflinePlayer player) {
-        //playerFile = new File(Main.getPlugin().getUuidFolder(), "plugins/Lotto/UUIDs/" + player.getUniqueId().toString() + ".yml");
+        playerFile = new File(Main.getPlugin().getUuidFolder(), "plugins/RandomMultiple/UUIDs/" + player.getUniqueId().toString() + ".yml");
 
-       /* if (!playerFile.exists()) {
+        if (!playerFile.exists()) {
             Main.getPlugin().createPlayerDefaults();
-        }*/
+        }
 
-        //config = YamlConfiguration.loadConfiguration(playerFile);
+        config = YamlConfiguration.loadConfiguration(playerFile);
         return config;
     }
 }

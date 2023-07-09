@@ -1,8 +1,9 @@
 package com.server.randommultiple.Listener;
 
+import com.server.randommultiple.Utils.Color;
 import net.citizensnpcs.api.event.NPCRightClickEvent;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.NPC;
+import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,14 +11,20 @@ import org.bukkit.event.Listener;
 import static com.server.randommultiple.Main.plugin;
 
 public class Citizen implements Listener {
+    String title = (Color.chat("&f[ &a랜덤배율 &f] "));
 
     @EventHandler
-    void npcOpenEvent(NPCRightClickEvent event) {
+    public void npcOpenEvent(NPCRightClickEvent event) {
         Player player = event.getClicker();
-        NPC npc = (NPC) event.getNPC();
+        NPC npc = event.getNPC();
         String getNPC = plugin.getConfig().getString("NPC 설정");
 
-        if (npc.getName().equals(getNPC)) { return; }
-        Bukkit.getPluginManager().registerEvents(new ChatListener(plugin, player), plugin); //fix
+        if (!npc.getName().equals(getNPC)) {
+            return;
+        }
+
+        /* 배율입력 && 인벤오픈 */
+        player.sendMessage(title + "채팅에 배율을 입력 해주세요.");
+        Bukkit.getPluginManager().registerEvents(new ChatListener(player), plugin);
     }
 }

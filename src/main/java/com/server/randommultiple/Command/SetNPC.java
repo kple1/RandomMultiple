@@ -16,12 +16,12 @@ public class SetNPC implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player) {
-            if (player.isOp()) {
+            if (!player.isOp()) {
                 return true;
             }
-            plugin.getConfig().set("NPC 설정", args[1]);
-            plugin.saveConfig();
-            player.sendMessage(title + "npc 설정이 되었습니다.");
+                plugin.getConfig().set("NPC 설정", args[1]);
+                plugin.saveConfig();
+                player.sendMessage(title + "NPC 설정이 되었습니다.");
         }
         return false;
     }

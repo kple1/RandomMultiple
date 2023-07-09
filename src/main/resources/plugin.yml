@@ -2,3 +2,10 @@ name: RandomMultiple
 version: '1.0'
 main: com.server.randommultiple.Main
 api-version: '1.13'
+softdepend:
+  - Citizens
+  - Vault
+
+commands:
+  RandomMultiple:
+    aliases: "랜덤배율"

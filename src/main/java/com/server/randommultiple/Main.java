@@ -2,10 +2,14 @@ package com.server.randommultiple;
 
 import com.server.randommultiple.Command.MainCommand;
 import com.server.randommultiple.Listener.Citizen;
+import com.server.randommultiple.Listener.CreateFile;
+import com.server.randommultiple.Listener.InvClickCancel;
+import com.server.randommultiple.Listener.ClickShowMultiple;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.io.IOException;
 
 import static com.server.randommultiple.UserData.Datas.config;
@@ -14,9 +18,13 @@ import static com.server.randommultiple.UserData.Datas.playerFile;
 public final class Main extends JavaPlugin {
 
     public static Main plugin;
+    private File uuidFolder;
 
     public void listener() {
         Bukkit.getPluginManager().registerEvents(new Citizen(), this);
+        Bukkit.getPluginManager().registerEvents(new CreateFile(this), this);
+        Bukkit.getPluginManager().registerEvents(new InvClickCancel(), this);
+        Bukkit.getPluginManager().registerEvents(new ClickShowMultiple(), this);
     }
 
     public void command() {
@@ -32,7 +40,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        plugin.saveDefaultConfig();
+        saveConfig();
     }
 
     public void createPlayerDefaults() {
@@ -48,6 +56,10 @@ public final class Main extends JavaPlugin {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public File getUuidFolder() {
+        return uuidFolder;
     }
 
     public static Main getPlugin() {
