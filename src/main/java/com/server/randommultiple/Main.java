@@ -1,10 +1,7 @@
 package com.server.randommultiple;
 
 import com.server.randommultiple.Command.MainCommand;
-import com.server.randommultiple.Listener.Citizen;
-import com.server.randommultiple.Listener.CreateFile;
-import com.server.randommultiple.Listener.InvClickCancel;
-import com.server.randommultiple.Listener.ClickShowMultiple;
+import com.server.randommultiple.Listener.*;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,6 +22,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new CreateFile(this), this);
         Bukkit.getPluginManager().registerEvents(new InvClickCancel(), this);
         Bukkit.getPluginManager().registerEvents(new ClickShowMultiple(), this);
+        Bukkit.getPluginManager().registerEvents(new InvCloseEvent(), this);
     }
 
     public void command() {

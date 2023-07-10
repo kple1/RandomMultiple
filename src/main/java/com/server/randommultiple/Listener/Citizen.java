@@ -2,6 +2,7 @@ package com.server.randommultiple.Listener;
 
 import com.server.randommultiple.Utils.Color;
 import net.citizensnpcs.api.event.NPCRightClickEvent;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.entity.Player;
@@ -12,6 +13,7 @@ import static com.server.randommultiple.Main.plugin;
 
 public class Citizen implements Listener {
     String title = (Color.chat("&f[ &a랜덤배율 &f] "));
+    private Economy economy;
 
     @EventHandler
     public void npcOpenEvent(NPCRightClickEvent event) {
@@ -24,7 +26,7 @@ public class Citizen implements Listener {
         }
 
         /* 배율입력 && 인벤오픈 */
-        player.sendMessage(title + "채팅에 배율을 입력 해주세요.");
+        player.sendMessage(title + "배팅할 금액을 입력 해주세요.");
         Bukkit.getPluginManager().registerEvents(new ChatListener(player), plugin);
     }
 }

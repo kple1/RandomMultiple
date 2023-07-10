@@ -13,7 +13,6 @@ public class MultipleSet {
         YamlConfiguration config = Datas.getPlayerConfig(player);
         Random random = new Random();
 
-        // 확률과 해당 값을 매핑한 리스트 생성
         List<Double> probabilities = Arrays.asList(
                 0.6, 0.4, 0.1, 0.5, 0.25, 0.15, 0.2, 0.3, 0.001, 0.0001
         );
@@ -31,7 +30,6 @@ public class MultipleSet {
             selectedValues.add(selectedValue);
         }
 
-        // 값을 config에 설정
         for (int i = 0; i < selectedValues.size(); i++) {
             config.set("배수." + i, selectedValues.get(i));
         }
