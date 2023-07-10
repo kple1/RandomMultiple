@@ -23,6 +23,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new InvClickCancel(), this);
         Bukkit.getPluginManager().registerEvents(new ClickShowMultiple(), this);
         Bukkit.getPluginManager().registerEvents(new InvCloseEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new OpenInv(), this);
     }
 
     public void command() {

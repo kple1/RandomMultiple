@@ -14,7 +14,7 @@ public class MultipleSet {
         Random random = new Random();
 
         List<Double> probabilities = Arrays.asList(
-                0.6, 0.4, 0.1, 0.5, 0.25, 0.15, 0.2, 0.3, 0.001, 0.0001
+                0.6, 0.5, 0.5, 0.5, 0.25, 0.15, 0.2, 0.3, 0.001, 0.0001
         );
 
         List<String> values = Arrays.asList(
@@ -33,7 +33,6 @@ public class MultipleSet {
         for (int i = 0; i < selectedValues.size(); i++) {
             config.set("배수." + i, selectedValues.get(i));
         }
-
         Main.getPlugin().saveYamlConfiguration();
     }
 
