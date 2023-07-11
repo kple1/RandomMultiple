@@ -70,7 +70,7 @@ public class ClickShowMultiple implements Listener {
             player.sendMessage(title + "이미 모두 선택 하셨습니다!");
         }
 
-        if (getLimit == 4) {
+        if (getLimit == 3) {
             return;
         }
 
