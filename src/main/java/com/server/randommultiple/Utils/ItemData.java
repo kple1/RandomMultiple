@@ -15,6 +15,7 @@ public class ItemData {
         ItemStack stack = new ItemStack(type, amount);
         ItemMeta meta = stack.getItemMeta();
         meta.setDisplayName(displayName);
+        stack.setItemMeta(meta);
         return stack;
     }
 
@@ -23,4 +24,5 @@ public class ItemData {
     public static final ItemStack goldBlock = result_NameType(Material.GOLD_BLOCK, 1, (Color.chat("&f남은 횟수")));
     public static final ItemStack blackGlassPane = result_NameType(Material.BLACK_STAINED_GLASS_PANE, 1, (Color.chat("클릭!")));
     public static final ItemStack air = result_ShortType(Material.AIR, 1);
+    public static final ItemStack lapis = result_NameType(Material.LAPIS_LAZULI, 1, (Color.chat("&f확률 공개")));
 }

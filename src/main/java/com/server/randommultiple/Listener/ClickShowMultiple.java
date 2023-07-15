@@ -25,6 +25,7 @@ public class ClickShowMultiple implements Listener {
     @EventHandler
     public void InvClickEvent(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
+        YamlConfiguration config = Datas.getPlayerConfig(player);
         Inventory inv = event.getInventory();
 
         if (!event.getView().getTitle().equals("[ 랜덤배율 ]")) {
@@ -51,7 +52,14 @@ public class ClickShowMultiple implements Listener {
             return;
         }
 
-        YamlConfiguration config = Datas.getPlayerConfig(player);
+        for (int i = 0; i < 3; i++) {
+            int getSlot = config.getInt("클릭한 슬롯" + i);
+            if (event.getSlot() == getSlot) {
+                player.sendMessage(title + "이미 선택한 슬롯입니다!");
+                return;
+            }
+        }
+
         int getLimit = config.getInt("선택한 배율 개수");
 
         switch (getLimit) {
@@ -60,29 +68,24 @@ public class ClickShowMultiple implements Listener {
             case 2 -> inv.setItem(47, ItemData.air);
         }
 
-        if (event.getSlot() == 53) {
+        if (event.getSlot() == 52) {
             inv.close();
         }
 
         //모두 클릭 했으면 확률 공개
-        boolean r = false;
         for (int i = 0; i < 45; i++) {
             if (getLimit == 3) {
-                ItemStack itemStack = new ItemStack(Material.DIAMOND);
-                ItemMeta itemMeta = itemStack.getItemMeta();
-                itemMeta.setDisplayName(config.getString("배수." + i));
-                itemStack.setItemMeta(itemMeta);
-                inv.setItem(i, itemStack);
-                r = true;
+                if (event.getSlot() == 53) {
+                    ItemStack itemStack = new ItemStack(Material.DIAMOND);
+                    ItemMeta itemMeta = itemStack.getItemMeta();
+                    itemMeta.setDisplayName(config.getString("배수." + i));
+                    itemStack.setItemMeta(itemMeta);
+                    inv.setItem(i, itemStack);
+                }
             }
         }
 
-        if (r) {
-            player.sendMessage(title + "이미 모두 선택 하셨습니다!");
-        }
-
         if (getLimit == 3) {
-            Main.getPlugin().startTimer(inv, player);
             return;
         }
 
@@ -95,10 +98,20 @@ public class ClickShowMultiple implements Listener {
         inv.setItem(event.getSlot(), itemStack);
 
         config.set("선택한 배율 개수", getLimit + 1);
+
         switch (getLimit) {
-            case 0 -> config.set("당첨된 배율1", name);
-            case 1 -> config.set("당첨된 배율2", name);
-            case 2 -> config.set("당첨된 배율3", name);
+            case 0 -> {
+                config.set("당첨된 배율1", name);
+                config.set("클릭한 슬롯1", event.getSlot());
+            }
+            case 1 -> {
+                config.set("당첨된 배율2", name);
+                config.set("클릭한 슬롯2", event.getSlot());
+            }
+            case 2 -> {
+                config.set("당첨된 배율3", name);
+                config.set("클릭한 슬롯3", event.getSlot());
+            }
         }
         Main.getPlugin().saveYamlConfiguration();
     }

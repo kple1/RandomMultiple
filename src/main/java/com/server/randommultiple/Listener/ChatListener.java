@@ -3,6 +3,7 @@ package com.server.randommultiple.Listener;
 import com.server.randommultiple.Main;
 import com.server.randommultiple.UserData.Datas;
 import com.server.randommultiple.Utils.Color;
+import com.server.randommultiple.Utils.ItemData;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
@@ -59,30 +60,19 @@ public class ChatListener implements Listener {
                 Main.getPlugin().saveYamlConfiguration();
 
                 /* 인벤오픈 */
-                ItemStack blackGlassPane = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
-                ItemStack goldBlock = new ItemStack(Material.GOLD_BLOCK);
-                ItemStack emerald = new ItemStack(Material.EMERALD);
-                ItemStack redStoneBlock = new ItemStack(Material.REDSTONE_BLOCK);
-
-                ItemMeta getMetaGoldBlock = goldBlock.getItemMeta();
-                getMetaGoldBlock.setDisplayName(Color.chat("&f남은 횟수"));
-                goldBlock.setItemMeta(getMetaGoldBlock);
-
-                ItemMeta getMetaRedStoneBlock = redStoneBlock.getItemMeta();
-                getMetaRedStoneBlock.setDisplayName(Color.chat("&c게임 종료"));
-                redStoneBlock.setItemMeta(getMetaRedStoneBlock);
 
                 this.inv = Bukkit.createInventory(null, 54, "[ 랜덤배율 ]");
                 for (int i = 0; i < 45; i++) {
-                    inv.setItem(i, blackGlassPane);
+                    inv.setItem(i, ItemData.blackGlassPane);
                 }
                 for (int i = 45; i < 48; i++) {
-                    inv.setItem(i, goldBlock);
+                    inv.setItem(i, ItemData.goldBlock);
                 }
-                for (int i = 48; i < 53; i++) {
-                    inv.setItem(i, emerald);
+                for (int i = 48; i < 52; i++) {
+                    inv.setItem(i, ItemData.emerald);
                 }
-                inv.setItem(53, redStoneBlock);
+                inv.setItem(52, ItemData.redStoneBlock);
+                inv.setItem(53, ItemData.lapis);
                 player.openInventory(inv);
 
             } else {

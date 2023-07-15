@@ -1,5 +1,6 @@
 package com.server.randommultiple.Utils;
 
+import com.server.randommultiple.Main;
 import com.server.randommultiple.UserData.Datas;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -59,6 +60,21 @@ public class Calculator {
         checkVault(player);
         economy.depositPlayer(player, totalPrize);
         player.sendMessage(title + totalPrize + "원에 당첨되셨습니다!");
+
+        config.set("선택한 배율 개수", 0);
+        config.set("배팅금액", 0);
+        for (int i = 1; i < 4; i++) {
+            config.set("당첨된 배율" + i, 0);
+        }
+
+        for (int i = 0; i < 4; i++) {
+            config.set("클릭한 슬롯" + i, 0);
+        }
+
+        for (int i = 0; i < 45; i++) {
+            config.set("배수." + i, 0);
+        }
+        Main.getPlugin().saveYamlConfiguration();
     }
 
 
