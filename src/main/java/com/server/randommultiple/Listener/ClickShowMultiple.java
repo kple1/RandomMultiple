@@ -4,8 +4,6 @@ import com.server.randommultiple.Main;
 import com.server.randommultiple.UserData.Datas;
 import com.server.randommultiple.Utils.Color;
 import com.server.randommultiple.Utils.ItemData;
-import com.server.randommultiple.Utils.MultipleSet;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -15,8 +13,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import static com.server.randommultiple.Main.plugin;
 
 public class ClickShowMultiple implements Listener {
 
