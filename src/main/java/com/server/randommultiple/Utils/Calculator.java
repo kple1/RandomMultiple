@@ -10,7 +10,7 @@ public class Calculator {
     private Economy economy;
 
     public void calculator(Player player) {
-        //총 상금 지불
+        // 총 상금 지불
         YamlConfiguration config = Datas.getPlayerConfig(player);
         int getLimit = config.getInt("선택한 배율 개수");
         int getMoney = config.getInt("배팅금액");
@@ -18,25 +18,42 @@ public class Calculator {
         String getMultiple2 = config.getString("당첨된 배율.2");
         String getMultiple3 = config.getString("당첨된 배율.3");
 
-        double result = 0;
-        String[] operators = {"+", "-", "X"};
-        for (String operator : operators) {
-            if (getMultiple1.contains(operator)) {
-                String[] parts = getMultiple1.split(operator);
-                double num1 = Double.parseDouble(parts[0]);
-                double num2 = Double.parseDouble(parts[1]);
-                switch (operator) {
-                    case "+":
-                        result += num1 + num2;
-                        break;
-                    case "-":
-                        result += num1 - num2;
-                        break;
-                    case "X":
-                        result += num1 * num2;
-                        break;
-                }
-            }
+        double totalPrize = getMoney; // 초기 상금은 배팅금액으로 설정
+
+        // 배율에 따라 계산
+        if (getLimit >= 1) {
+            totalPrize += calculate(getMultiple1, getMoney);
         }
+        if (getLimit >= 2) {
+            totalPrize += calculate(getMultiple2, getMoney);
+        }
+        if (getLimit >= 3) {
+            totalPrize += calculate(getMultiple3, getMoney);
+        }
+
+
+        // 상금 지불 처리
+        economy.depositPlayer(player, totalPrize);
+    }
+
+    private double calculate(String multiple, double getMoney) {
+        double prize = 0;
+
+        // 숫자, 연산자 분리
+        String[] parts = multiple.split(" ");
+        double number = Double.parseDouble(parts[0]);
+        char operator = parts[1].charAt(0);
+
+        // 연산자에 따라 계산
+        switch (operator) {
+            case '+' -> prize += number;
+            case '-' -> prize -= number;
+            case '*' -> prize *= number;
+        }
+
+        // 배팅금액과 함께 계산
+        prize *= getMoney;
+
+        return prize;
     }
 }

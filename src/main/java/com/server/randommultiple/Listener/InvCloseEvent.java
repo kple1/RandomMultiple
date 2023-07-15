@@ -3,7 +3,6 @@ package com.server.randommultiple.Listener;
 import com.server.randommultiple.Main;
 import com.server.randommultiple.UserData.Datas;
 import com.server.randommultiple.Utils.Calculator;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
