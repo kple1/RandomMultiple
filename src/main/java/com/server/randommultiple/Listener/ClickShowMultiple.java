@@ -83,7 +83,12 @@ public class ClickShowMultiple implements Listener {
         inv.setItem(event.getSlot(), itemStack);
 
         config.set("선택한 배율 개수", getLimit + 1);
-        config.set("당첨된 배율", name);
+        switch (getLimit) {
+            case 0 -> config.set("당첨된 배율1", name);
+            case 1 -> config.set("당첨된 배율2", name);
+            case 2 -> config.set("당첨된 배율3", name);
+        }
+
         Main.getPlugin().saveYamlConfiguration();
     }
 }
