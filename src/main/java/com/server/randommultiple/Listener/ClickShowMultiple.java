@@ -3,6 +3,7 @@ package com.server.randommultiple.Listener;
 import com.server.randommultiple.Main;
 import com.server.randommultiple.UserData.Datas;
 import com.server.randommultiple.Utils.Color;
+import com.server.randommultiple.Utils.ItemData;
 import com.server.randommultiple.Utils.MultipleSet;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Material;
@@ -53,9 +54,19 @@ public class ClickShowMultiple implements Listener {
         YamlConfiguration config = Datas.getPlayerConfig(player);
         int getLimit = config.getInt("선택한 배율 개수");
 
+        switch (getLimit) {
+            case 0 -> inv.setItem(45, ItemData.air);
+            case 1 -> inv.setItem(46, ItemData.air);
+            case 2 -> inv.setItem(47, ItemData.air);
+        }
+
+        if (event.getSlot() == 53) {
+            inv.close();
+        }
+
         //모두 클릭 했으면 확률 공개
         boolean r = false;
-        for (int i = 0; i < 54; i++) {
+        for (int i = 0; i < 45; i++) {
             if (getLimit == 3) {
                 ItemStack itemStack = new ItemStack(Material.DIAMOND);
                 ItemMeta itemMeta = itemStack.getItemMeta();
@@ -71,6 +82,7 @@ public class ClickShowMultiple implements Listener {
         }
 
         if (getLimit == 3) {
+            Main.getPlugin().startTimer(inv, player);
             return;
         }
 
@@ -88,7 +100,6 @@ public class ClickShowMultiple implements Listener {
             case 1 -> config.set("당첨된 배율2", name);
             case 2 -> config.set("당첨된 배율3", name);
         }
-
         Main.getPlugin().saveYamlConfiguration();
     }
 }

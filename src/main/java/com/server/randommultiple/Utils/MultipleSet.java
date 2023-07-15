@@ -24,7 +24,7 @@ public class MultipleSet {
         List<String> selectedValues = new ArrayList<>();
 
         // 확률에 따라 값을 선택
-        for (int i = 0; i < 54; i++) {
+        for (int i = 0; i < 45; i++) {
             int index = getRandomIndexWithProbabilities(random, probabilities);
             String selectedValue = values.get(index);
             selectedValues.add(selectedValue);
