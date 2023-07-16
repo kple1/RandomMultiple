@@ -65,7 +65,7 @@ public class ClickShowMultiple implements Listener {
         }
 
         if (event.getSlot() == 52) {
-            inv.close();
+            player.closeInventory();
         }
 
         //모두 클릭 했으면 확률 공개
