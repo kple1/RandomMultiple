@@ -34,7 +34,7 @@ public class Calculator {
         switch (operator1) {
             case '+' -> result += value1;
             case '-' -> result -= value1;
-            case '*' -> result *= value1;
+            case 'X' -> result *= value1;
         }
 
         // getMultiple2 계산
@@ -43,7 +43,7 @@ public class Calculator {
         switch (operator2) {
             case '+' -> result += value2;
             case '-' -> result -= value2;
-            case '*' -> result *= value2;
+            case 'X' -> result *= value2;
         }
 
         // getMultiple3 계산
@@ -52,10 +52,11 @@ public class Calculator {
         switch (operator3) {
             case '+' -> result += value3;
             case '-' -> result -= value3;
-            case '*' -> result *= value3;
+            case 'X' -> result *= value3;
         }
 
-        double totalPrize = getMoney * (1.5 + result);
+        player.sendMessage(String.valueOf(result));
+        double totalPrize = getMoney * (1.5 * (result));
 
         checkVault(player);
         economy.depositPlayer(player, totalPrize);
