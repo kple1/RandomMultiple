@@ -3,12 +3,14 @@
 🔨 개발환경 :
 
 IDE : IntelliJ IDEA
+
 MC Ver : 1.19.2 / Vanilla
 
 
 💻 Command :
 
 /npc 설정 <npc 우클릭을 통해 랜덤배율 게임화면을 오픈설정을 합니다.>
+
 /npc 삭제 <설정된 npc를 삭제 합니다.>
 
 
@@ -20,6 +22,7 @@ config에서도 npc설정을 할 수 있습니다!
 🔎 config 내용 :
 
 채팅에 금액을 입력받을 NPC를 설정합니다.
+
 NPC 설정: test
 
 
