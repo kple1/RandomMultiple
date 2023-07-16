@@ -14,7 +14,7 @@ public class MultipleSet {
         Random random = new Random();
 
         List<Double> probabilities = Arrays.asList(
-                0.6, 0.5, 0.5, 0.5, 0.25, 0.15, 0.2, 0.3, 0.001, 0.0001
+                0.6, 0.5, 0.5, 0.5, 0.25, 0.15, 0.2, 0.3, 0.1, 0.1
         );
 
         List<String> values = Arrays.asList(

@@ -55,7 +55,7 @@ public class Calculator {
             case '*' -> result *= value3;
         }
 
-        double totalPrize = result * getMoney;
+        double totalPrize = getMoney * (1.5 + result);
 
         checkVault(player);
         economy.depositPlayer(player, totalPrize);
@@ -68,7 +68,7 @@ public class Calculator {
         }
 
         for (int i = 0; i < 4; i++) {
-            config.set("클릭한 슬롯" + i, 0);
+            config.set("클릭한 슬롯" + i, -1);
         }
 
         for (int i = 0; i < 45; i++) {
