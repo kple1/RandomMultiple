@@ -22,6 +22,7 @@ config에서도 npc설정을 할 수 있습니다!
 🔎 config 내용 :
 
 채팅에 금액을 입력받을 NPC를 설정합니다.
+
 NPC 설정: test
 
 
