@@ -27,6 +27,6 @@ public class Citizen implements Listener {
 
         /* 배율입력 && 인벤오픈 */
         player.sendMessage(title + "배팅할 금액을 입력 해주세요.");
-        Bukkit.getPluginManager().registerEvents(new ChatListener(player), plugin);
+        Bukkit.getPluginManager().registerEvents(new ChatListener(), plugin);
     }
 }

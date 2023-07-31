@@ -16,15 +16,11 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 public class ChatListener implements Listener {
-
-    private final Player player;
     private Inventory inv;
     private Economy economy;
     String title = (Color.chat("&f[ &a랜덤배율 &f] "));
 
-    public ChatListener(Player player) {
-        this.player = player;
-    }
+    public ChatListener() {}
 
     public void checkVault(Player player) {
         // Vault 플러그인을 이용하여 Economy 객체 가져오기
@@ -67,7 +63,7 @@ public class ChatListener implements Listener {
                 }
                 inv.setItem(52, ItemData.redStoneBlock);
                 inv.setItem(53, ItemData.lapis);
-                player.openInventory(inv);
+                getMessagePlayer.openInventory(inv);
 
             } else {
                 getMessagePlayer.sendMessage(title + "금액이 부족해서 배팅할 수 없습니다!");

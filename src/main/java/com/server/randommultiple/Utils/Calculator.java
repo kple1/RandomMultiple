@@ -21,6 +21,9 @@ public class Calculator {
         String getMultiple1 = config.getString("당첨된 배율1");
         String getMultiple2 = config.getString("당첨된 배율2");
         String getMultiple3 = config.getString("당첨된 배율3");
+        if (getMultiple1 == null || getMultiple2 == null || getMultiple3 == null) {
+            return;
+        }
 
         if (!(getLimit == 3)) {
             return;
@@ -55,8 +58,7 @@ public class Calculator {
             case 'X' -> result *= value3;
         }
 
-        player.sendMessage(String.valueOf(result));
-        double totalPrize = getMoney * (1.5 * (result));
+        double totalPrize = getMoney * (result);
 
         checkVault(player);
         economy.depositPlayer(player, totalPrize);
@@ -81,12 +83,10 @@ public class Calculator {
 
 
     public void checkVault(Player player) {
-        // Vault 플러그인을 이용하여 Economy 객체 가져오기
         RegisteredServiceProvider<Economy> rsp = Bukkit.getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp != null) {
             economy = rsp.getProvider();
         } else {
-            // Vault 플러그인이 설치되어 있지 않거나 Economy 서비스를 제공하지 않는 경우
             player.sendMessage("Vault 플러그인이 필요합니다.");
             return;
         }
