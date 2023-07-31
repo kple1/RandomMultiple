@@ -9,7 +9,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.inventory.Inventory;
@@ -37,10 +36,11 @@ public class ChatListener implements Listener {
     public void onChat(PlayerChatEvent event) {
         Player getMessagePlayer = event.getPlayer();
         String message = event.getMessage();
-        if (!message.isEmpty()) {
 
+        if (!message.isEmpty()) {
             checkVault(getMessagePlayer);
             double balance = economy.getBalance(getMessagePlayer);
+
             if (!(Double.parseDouble(message) > balance) && Double.parseDouble(message) != 0) {
 
                 economy.withdrawPlayer(getMessagePlayer, Double.parseDouble(message));
@@ -50,7 +50,6 @@ public class ChatListener implements Listener {
                 Main.getPlugin().saveYamlConfiguration();
 
                 /* 인벤오픈 */
-
                 this.inv = Bukkit.createInventory(null, 54, "[ 랜덤배율 ]");
                 for (int i = 0; i < 45; i++) {
                     inv.setItem(i, ItemData.blackGlassPane);
@@ -64,15 +63,10 @@ public class ChatListener implements Listener {
                 inv.setItem(52, ItemData.redStoneBlock);
                 inv.setItem(53, ItemData.lapis);
                 getMessagePlayer.openInventory(inv);
-
             } else {
                 getMessagePlayer.sendMessage(title + "금액이 부족해서 배팅할 수 없습니다!");
-                HandlerList.unregisterAll(this);
                 event.setCancelled(true);
             }
-
-            // 이벤트 핸들러를 제거합니다.
-            HandlerList.unregisterAll(this);
             event.setCancelled(true);
         }
     }

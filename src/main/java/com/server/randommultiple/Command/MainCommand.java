@@ -21,6 +21,11 @@ public class MainCommand implements CommandExecutor {
                         RemoveNPC removeNPC = new RemoveNPC();
                         removeNPC.onCommand(sender, command, label, args);
                     }
+
+                    case "코인" -> {
+                        CreateCoin createCoin = new CreateCoin();
+                        createCoin.onCommand(sender, command, label, args);
+                    }
                 }
             }
         }
