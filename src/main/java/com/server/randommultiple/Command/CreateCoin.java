@@ -15,7 +15,7 @@ public class CreateCoin implements CommandExecutor {
                 return true;
             }
 
-            player.getInventory().setItem(player.getInventory().getHeldItemSlot(), ItemData.createCoin(args[1], player));
+            player.getInventory().setItem(player.getInventory().getHeldItemSlot(), ItemData.createCoin(args[1], player, player.getInventory().getItemInMainHand().getAmount()));
         }
         return false;
     }

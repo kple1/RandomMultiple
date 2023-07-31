@@ -39,7 +39,7 @@ public class ItemData {
     public static final ItemStack air = result_ShortType(Material.AIR, 1);
     public static final ItemStack lapis = result_NameType(Material.LAPIS_LAZULI, 1, (Color.chat("&f확률 공개")));
 
-    public static ItemStack createCoin(String money, Player player) {
-        return result_LongType(player.getInventory().getItemInMainHand().getType(), 1, Color.chat("&f[&a배율게임&f] " + money + "원"), Color.chat("&fRandomMultipleCoin"));
+    public static ItemStack createCoin(String money, Player player, int amount) {
+        return result_LongType(player.getInventory().getItemInMainHand().getType(), amount, Color.chat("&f[&a배율게임&f] " + money + "원"), Color.chat("&fRandomMultipleCoin"));
     }
 }

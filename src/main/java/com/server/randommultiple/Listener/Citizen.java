@@ -73,6 +73,12 @@ public class Citizen implements Listener {
         inv.setItem(52, ItemData.redStoneBlock);
         inv.setItem(53, ItemData.lapis);
         player.openInventory(inv);
-        player.getInventory().removeItem(player.getInventory().getItemInMainHand());
+        removeItemsFromMainHand(player, 1);
+    }
+
+    public void removeItemsFromMainHand(Player player, int amountToRemove) {
+        ItemStack itemToRemove = player.getInventory().getItemInMainHand().clone();
+        itemToRemove.setAmount(amountToRemove);
+        player.getInventory().removeItem(itemToRemove);
     }
 }
