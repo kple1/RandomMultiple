@@ -31,9 +31,7 @@ public class Calculator {
             return;
         }
 
-        double result = 0.0;
-
-        // getMultiple1 계산
+        double result = 1.0;
         char operator1 = getMultiple1.charAt(0); // 부호
         double value1 = Double.parseDouble(getMultiple1.substring(1)); // 숫자
         switch (operator1) {
@@ -42,7 +40,6 @@ public class Calculator {
             case 'X' -> result *= value1;
         }
 
-        // getMultiple2 계산
         char operator2 = getMultiple2.charAt(0); // 부호
         double value2 = Double.parseDouble(getMultiple2.substring(1)); // 숫자
         switch (operator2) {
@@ -51,7 +48,6 @@ public class Calculator {
             case 'X' -> result *= value2;
         }
 
-        // getMultiple3 계산
         char operator3 = getMultiple3.charAt(0); // 부호
         double value3 = Double.parseDouble(getMultiple3.substring(1)); // 숫자
         switch (operator3) {
@@ -60,10 +56,11 @@ public class Calculator {
             case 'X' -> result *= value3;
         }
 
-        double totalPrize = getMoney * (result);
+        double totalPrize = getMoney * result;
 
         checkVault(player);
         economy.depositPlayer(player, totalPrize);
+        player.sendMessage(title + Color.chat("뽑은 3개의 총합은 &c&l" + result + "&f원입니다!"));
         player.sendMessage(title + totalPrize + "원에 당첨되셨습니다!");
 
         config.set("선택한 배율 개수", 0);
