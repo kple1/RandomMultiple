@@ -13,15 +13,13 @@ public class MultipleSet {
         YamlConfiguration config = Datas.getPlayerConfig(player);
         Random random = new Random();
 
-        List<Double> probabilities = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            probabilities.add(config.getDouble("probability." + i));
-        }
+        List<Double> probabilities = Arrays.asList(
+                0.6, 0.5, 0.5, 0.5, 0.25, 0.2, 0.3, 0.15, 0.05, 0.02
+        );
 
-        List<String> values = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            values.add(config.getString("multiple." + i));
-        }
+        List<String> values = Arrays.asList(
+                "X0", "X1", "+1", "-2", "X2", "+2", "-10", "-30", "X10", "X50"
+        );
 
         List<String> selectedValues = new ArrayList<>();
 

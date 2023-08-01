@@ -39,11 +39,13 @@ public final class Main extends JavaPlugin {
         listener();
         command();
         plugin = this;
+        saveDefaultConfig();
     }
 
     @Override
     public void onDisable() {
         saveConfig();
+        saveDefaultConfig();
     }
 
     public void createPlayerDefaults() {
