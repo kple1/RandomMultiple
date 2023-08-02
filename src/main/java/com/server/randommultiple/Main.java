@@ -42,12 +42,6 @@ public final class Main extends JavaPlugin {
         saveDefaultConfig();
     }
 
-    @Override
-    public void onDisable() {
-        saveConfig();
-        saveDefaultConfig();
-    }
-
     public void createPlayerDefaults() {
         YamlConfiguration playerConfig = YamlConfiguration.loadConfiguration(playerFile);
         playerConfig.addDefault("배팅 금액", 0);

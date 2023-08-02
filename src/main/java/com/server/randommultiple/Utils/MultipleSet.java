@@ -51,7 +51,6 @@ public class MultipleSet {
                 return i;
             }
         }
-
         return probabilities.size() - 1;
     }
 }
