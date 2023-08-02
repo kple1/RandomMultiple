@@ -19,7 +19,7 @@ public class ClickShowMultiple implements Listener {
     String title = (Color.chat("&f[ &a랜덤배율 &f] "));
 
     @EventHandler
-    public void InvClickEvent(InventoryClickEvent event) {
+    public void invClickEvent(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         YamlConfiguration config = Datas.getPlayerConfig(player);
         Inventory inv = event.getInventory();
